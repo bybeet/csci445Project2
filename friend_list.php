@@ -5,3 +5,4 @@
 	$result = $db->query("SELECT * FROM USERS");
 ?>
 
+<h2>Friend List</h2>
