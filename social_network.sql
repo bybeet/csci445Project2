@@ -1,3 +1,5 @@
+CREATE DATABASE team06;
+
 CREATE TABLE IF NOT EXISTS `USERS` (
   `id` int(11) NOT NULL auto_increment,
   `firstname` varchar(30) NOT NULL,
