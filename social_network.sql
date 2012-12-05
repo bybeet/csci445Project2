@@ -21,3 +21,10 @@ CREATE TABLE IF NOT EXISTS `STATUS UPDATES` (
   `status` varchar(140) NOT NULL,
   PRIMARY KEY (`id`)
   ) AUTO_INCREMENT=1 ;
+  
+CREATE TABLE IF NOT EXISTS `USER_INFORMATION` (
+  `id` int(11) NOT NULL auto_increment,
+  `userid` int(11) NOT NULL,
+  `information` varchar(200) NOT NULL,
+    PRIMARY KEY (`id`)
+  ) AUTO_INCREMENT=1 ;

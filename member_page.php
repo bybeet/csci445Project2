@@ -6,24 +6,35 @@
 	$result = $db->query("SELECT * FROM USERS");
 	
 ?>
-	<h2>Member Page</h2>
+		<h2>Member Page</h2>
 <?php
-
-
-		while($row = $reult->fetch_array(MYSQLI_ASSOC)){
-		var_dump($row);
-			$rows[] = $row;
+		?>
+		<table cellpadding="5">
+		<tr>
+		<th>Username</th>
+		<th></th>
+		</tr>
+		<?php
+		while( $row = $result->fetch_array(MYSQLI_ASSOC)){
+			if($row['username'] == $_SESSION['user']){
+				continue;
+			}
+			?>
+				<tr>
+				<td><?php echo $row["username"]; ?></td>
+				<td><button type="button">Add as friend</button></td>
+				</tr>
+			<?php
 		}
-		
-		foreach($rows as $row){
-			var_dump($row);
-		}
+		?>
+		</table>
+		<?php
 	
 	$result->free();
 	$db->close();
 
 ?>
-
-
+	</body>
+</html>
 
 

@@ -1,13 +1,5 @@
 <?php
-	session_start();
-
-	if ($_SESSION['logged_on'] == false) {
-		header("Location: index.php");
-		exit;
-	}
-	
-	header('header.php');
-	
+	require('header.php');	
 ?>
 
 	<div>
