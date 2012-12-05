@@ -14,3 +14,10 @@ CREATE TABLE IF NOT EXISTS `FRIENDS` (
   `friendid` int(11) NOT NULL,
   PRIMARY KEY (`id`)
   ) AUTO_INCREMENT=1 ;
+  
+CREATE TABLE IF NOT EXISTS `STATUS UPDATES` (
+  `id` int(11) NOT NULL auto_increment,
+  `userid` int(11) NOT NULL,
+  `status` varchar(140) NOT NULL,
+  PRIMARY KEY (`id`)
+  ) AUTO_INCREMENT=1 ;
