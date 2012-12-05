@@ -19,7 +19,7 @@
 		</div>
 		<div>
 			<h2>New User Registration</h2>
-			<form id="registration_form">
+			<form id="registration_form" method="post" action="user_create.php">
 				<label for="registration_first_name">First Name:
 				<input type="text" id="registration_first_name" />
 				</label>
