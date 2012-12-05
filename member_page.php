@@ -20,10 +20,13 @@
 				continue;
 			}
 			?>
+				<form action="add_friend.php" method="post">
 				<tr>
 				<td><?php echo $row["username"]; ?></td>
-				<td><button type="button">Add as friend</button></td>
+				<input name="new_friend_username" value="<?= $row['username']; ?>" type="hidden"/>
+				<td><input type="submit" value="Add as a friend"/></td>
 				</tr>
+				</form>
 			<?php
 		}
 		?>
