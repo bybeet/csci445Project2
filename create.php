@@ -21,30 +21,30 @@
 			<h2>New User Registration</h2>
 			<form id="registration_form" method="post" action="user_create.php">
 				<label for="registration_first_name">First Name:
-				<input type="text" id="registration_first_name" />
+				<input type="text" id="registration_first_name"  name="registration_first_name"/>
 				</label>
 				<br />
 				<label for="registration_last_name">Last Name:
-				<input type="text" id="registration_last_name" />
+				<input type="text" id="registration_last_name" name="registration_last_name"/>
 				</label>
 				<label for="registration_user_name">User Name:
-				<input type="text" id="registration_user_name" />
+				<input type="text" id="registration_user_name" name="registration_user_name"/>
 				</label>
 				<br />
 				<label for="registration_email">Email Address:
-				<input type="text" id="registration_email" />
+				<input type="text" id="registration_email" name="registration_email"/>
 				</label>
 				<br />
 				<label for="registration_password">Password:
-				<input type="password" id="registration_password" />
+				<input type="password" id="registration_password" name="registration_password"/>
 				</label>
 				<br />
 				<label for="registration_password_confirm">Re-enter Password:
-				<input type="password" id="registration_password_confirm" />
+				<input type="password" id="registration_password_confirm" name="registration_password_confirm"/>
 				</label>
 				<br />
 				<label for="registration_image_file">User Picture:
-				<input type="file" id="registration_image_file" />
+				<input type="file" id="registration_image_file" name="registration_image_file"/>
 				</label>
 				<br />
 				<input type="submit" value="Submit" />

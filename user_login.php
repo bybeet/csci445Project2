@@ -8,7 +8,9 @@
 		$password = strip_tags($_POST['login_password']);
 		@ $db = new mysqli(localhost, root, '', team06);
 		$result = $db->query("SELECT * FROM USERS WHERE username = '{$username}' AND password = '{$password}'");
-		$count = mysqli_fetch_object($reult)->num_rows;
+		echo '<pre>' . print_r($result, true) . '</pre>';
+		$count = $reult->num_rows;
+		echo '<pre>' . print_r($result, true) . '</pre>';
 
 		if ($count != 0) {
 			$user = $result->fetch_assoc();
