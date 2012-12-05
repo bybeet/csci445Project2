@@ -5,9 +5,15 @@
 	/*if(isset($_SESSION['user'])){
 		header("Location: profile.php");
 	}*/
+	if ($_SESSION['logged_on'] == false) {
+		header("Location: index.php");
+		exit;
+	}
+	
+	
 	require('header.php')
 ?>
-	<h2>Profile</h2>
+	<h2>Profile - <?php echo $_SESSION['user']; ?></h2>
 		<div>
 			<p>No content yet. Sorry!</p>
 		</div>

@@ -8,20 +8,19 @@
 		$password = strip_tags($_POST['login_password']);
 		@ $db = new mysqli(localhost, root, '', team06);
 		$result = $db->query("SELECT * FROM USERS WHERE username = '{$username}' AND password = '{$password}'");
-		echo '<pre>' . print_r($result, true) . '</pre>';
-		$count = $reult->num_rows;
-		echo '<pre>' . print_r($result, true) . '</pre>';
+		var_dump($result);
+		//$count = $reult->num_rows;
 
-		if ($count != 0) {
+		if ($result->num_rows == 1) {
 			$user = $result->fetch_assoc();
 			$_SESSION['logged_on'] = true;
-
+			$_SESSION['user'] = $username;
 			header("Location: home.php");
 		}
 		else {
 			$_SESSION['logged_on'] = false;
 			$_SESSION['failure'] = "Failed to log in";
-			header("Location: incorrect_user.php");	
+			//header("Location: incorrect_user.php");	
 		}
 		$db->close();
 	}
