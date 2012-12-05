@@ -6,8 +6,7 @@
 	</head>
 	<body>
 		<div>
-			<h1>Welcome to NFb!</h1>
-			<h2>The Not Facebook</h2>
+			<h1>The Not Facebook</h1>
 		</div>
 		<div>
 			<a href="profile_logout.php">Logout of Not Facebook</a>

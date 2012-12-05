@@ -5,18 +5,9 @@
 	/*if(isset($_SESSION['user'])){
 		header("Location: profile.php");
 	}*/
+	require('header.php')
 ?>
-<!DOCTYPE html>
-<html>
-	<head>
-	<head>
-		<title>Not Facebook</title>
-        <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
-	</head>
-	<body>
-		<div>
-			<a href="profile_logout.php">Logout?</a>
-		</div>
+	<h2>Profile</h2>
 		<div>
 			<p>No content yet. Sorry!</p>
 		</div>

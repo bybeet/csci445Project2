@@ -7,8 +7,8 @@
 		$username = strip_tags($_POST['login_username']);
 		$password = strip_tags($_POST['login_password']);
 		@ $db = new mysqli(localhost, root, '', team06);
-		$result = $db->query("SELECT * FROM USERS WHERE username = '{$username}' AND PASSWORD = '{$password}'");
-		$count = mysqli_num_rows($result);
+		$result = $db->query("SELECT * FROM USERS WHERE username = '{$username}' AND password = '{$password}'");
+		$count = mysqli_fetch_object($reult)->num_rows;
 
 		if ($count != 0) {
 			$user = $result->fetch_assoc();
