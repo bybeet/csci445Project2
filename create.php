@@ -27,6 +27,9 @@
 				<label for="registration_last_name">Last Name:
 				<input type="text" id="registration_last_name" />
 				</label>
+				<label for="registration_user_name">User Name:
+				<input type="text" id="registration_user_name" />
+				</label>
 				<br />
 				<label for="registration_email">Email Address:
 				<input type="text" id="registration_email" />
