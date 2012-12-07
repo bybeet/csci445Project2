@@ -4,9 +4,10 @@ CREATE TABLE IF NOT EXISTS `USERS` (
   `id` int(11) NOT NULL auto_increment,
   `firstname` varchar(30) NOT NULL,
   `lastname` varchar(30) NOT NULL,
-  `username` varchar(30) NOT NULL,
   `email` varchar(30) NOT NULL,
   `password` varchar(30) NOT NULL,
+  `age` int(3),
+  `gender` varchar(6),
   PRIMARY KEY  (`id`)
 ) AUTO_INCREMENT=1 ;
 
