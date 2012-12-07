@@ -5,6 +5,8 @@
 	$firstname = strip_tags($_POST['registration_first_name']);
 	$lastname = strip_tags($_POST['registration_last_name']);
 	//$username = strip_tags($_POST['registration_user_name']);
+	$age = strip_tags($_POST['registration_age']);
+	$gender = strip_tags($_POST['registration_gender']);
 	$email = strip_tags($_POST['registration_email']);
 	$password = strip_tags($_POST['registration_password']);
 	$passwordconfirm = strip_tags($_POST['registration_password_confirm']);
@@ -17,7 +19,7 @@
 			header("Location: incorrect_create.php");
 			exit;
 		}
-		$result = $db->query("INSERT INTO USERS (firstname, lastname, email, password) VALUES ('{$firstname}', '{$lastname}', '{$email}', '{$password}');");
+		$result = $db->query("INSERT INTO USERS (firstname, lastname, email, password, age, gender) VALUES ('{$firstname}', '{$lastname}', '{$email}', '{$password}', '{$age}', '{$gender}');");
 		?>
 		<h1>Account Successfully Created!</h1>
 		<a href="index.php">Return to main screen and login.</a>

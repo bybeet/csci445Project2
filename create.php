@@ -36,7 +36,7 @@
 				<input type="text" id="registration_age" name="regisration_age"/>
 				</label>
 				<label for="registration_gender">Gender:
-				<select name="menu">
+				<select name="registration_gender">
 				<option value="male" selected>Male</option>
 				<option value="female">Female</option>
 				</select>
