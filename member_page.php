@@ -23,7 +23,7 @@
 				<form action="add_friend.php" method="post">
 				<tr>
 				<td><?php echo $row["email"]; ?></td>
-				<input name="new_friend_username" value="<?= $row['email']; ?>" type="hidden"/>
+				<input name="new_friend_email" value="<?= $row['email']; ?>" type="hidden"/>
 				<td><input type="submit" value="Add as a friend"/></td>
 				</tr>
 				</form>

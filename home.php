@@ -3,7 +3,7 @@
 ?>
 
 	<div>
-		<p><?php echo $_SESSION['user']; ?>, you logged in!</p>
+		<p><?php echo $_SESSION['email']; ?>, you logged in!</p>
 	</div>
 
 </body>
