@@ -27,13 +27,19 @@
 				<label for="registration_last_name">Last Name:
 				<input type="text" id="registration_last_name" name="registration_last_name"/>
 				</label>
-				<label for="registration_user_name">User Name:
-				<input type="text" id="registration_user_name" name="registration_user_name"/>
-				</label>
 				<br />
 				<label for="registration_email">Email Address:
 				<input type="text" id="registration_email" name="registration_email"/>
 				</label>
+				<br />
+				<label for="registration_age">Age:
+				<input type="text" id="registration_age" name="regisration_age"/>
+				</label>
+				<label for="registration_gender">Gender:
+				<select name="menu">
+				<option value="male" selected>Male</option>
+				<option value="female">Female</option>
+				</select>
 				<br />
 				<label for="registration_password">Password:
 				<input type="password" id="registration_password" name="registration_password"/>
