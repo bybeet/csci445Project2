@@ -50,5 +50,8 @@
 				<input type="submit" value="Submit" />
 			</form>
 		</div>
+		<form method="link" action="index.php">
+		<input type="submit" value="Cancel"/>
+		</form>
 	</body>
 </html>
