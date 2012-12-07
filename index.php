@@ -19,8 +19,8 @@
 		<div>
 			<h2>Current User Login</h2>
 			<form id="login_form" method="post" action="user_login.php">
-				<label for="login_username">Username:</label>
-				<input type="text" id="login_username" name="login_username" />
+				<label for="login_username">Email:</label>
+				<input type="text" id="login_email" name="login_email" />
 				<br />
 				<label for="login_password">Password:</label>
 				<input type="password" id="login_password" name="login_password" />

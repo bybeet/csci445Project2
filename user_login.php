@@ -1,18 +1,18 @@
 <?php
 	session_start();
 	
-	if($_POST['login_username'] == "" || $_POST['login_password'] == ""){
+	if($_POST['login_email'] == "" || $_POST['login_password'] == ""){
 		header("Location: incorrect_user.php");
 	}else{
-		$username = strip_tags($_POST['login_username']);
+		$email = strip_tags($_POST['login_email']);
 		$password = strip_tags($_POST['login_password']);
 		@ $db = new mysqli(localhost, root, '', team06);
-		$result = $db->query("SELECT * FROM USERS WHERE username = '{$username}' AND password = '{$password}'");
+		$result = $db->query("SELECT * FROM USERS WHERE email = '{$email}' AND password = '{$password}'");
 
 		if ($result->num_rows == 1) {
 			$user = $result->fetch_assoc();
 			$_SESSION['logged_on'] = true;
-			$_SESSION['user'] = $username;
+			$_SESSION['user'] = $email;
 			header("Location: home.php");
 		}
 		else {
