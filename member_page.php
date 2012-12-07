@@ -11,19 +11,19 @@
 		?>
 		<table cellpadding="5">
 		<tr>
-		<th>Username</th>
+		<th>Email</th>
 		<th></th>
 		</tr>
 		<?php
 		while( $row = $result->fetch_array(MYSQLI_ASSOC)){
-			if($row['username'] == $_SESSION['user']){
+			if($row['email'] == $_SESSION['email']){
 				continue;
 			}
 			?>
 				<form action="add_friend.php" method="post">
 				<tr>
-				<td><?php echo $row["username"]; ?></td>
-				<input name="new_friend_username" value="<?= $row['username']; ?>" type="hidden"/>
+				<td><?php echo $row["email"]; ?></td>
+				<input name="new_friend_username" value="<?= $row['email']; ?>" type="hidden"/>
 				<td><input type="submit" value="Add as a friend"/></td>
 				</tr>
 				</form>

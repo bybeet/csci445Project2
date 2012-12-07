@@ -12,7 +12,7 @@
 		if ($result->num_rows == 1) {
 			$user = $result->fetch_assoc();
 			$_SESSION['logged_on'] = true;
-			$_SESSION['user'] = $email;
+			$_SESSION['email'] = $email;
 			header("Location: home.php");
 		}
 		else {
