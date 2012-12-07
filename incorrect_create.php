@@ -18,7 +18,7 @@
 			<h2>The Not Facebook</h2>
 		</div>
 		<div>
-			<p>Incorrect Information, account not created.</p>
+			<p>Incorrect information, account not created.</p>
 		</div>
 		<div>
 			<a href="create.php">Return to User Creation</a>
