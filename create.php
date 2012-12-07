@@ -50,7 +50,7 @@
 				</label>
 				<br />
 				<label for="registration_image_file">User Picture:
-				<input type="file" id="registration_image_file" name="registration_image_file"/>
+				<input type="file" id="registration_image_file" accept="image/jpeg" name="registration_image_file"/>
 				</label>
 				<br />
 				<input type="submit" value="Submit" />

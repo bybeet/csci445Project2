@@ -10,6 +10,7 @@
 	$email = strip_tags($_POST['registration_email']);
 	$password = strip_tags($_POST['registration_password']);
 	$passwordconfirm = strip_tags($_POST['registration_password_confirm']);
+	$image = $_POST['registration_image_file'];
 	if($password === $passwordconfirm){
 	//todo: need to validate the information
 		$result = $db->query("SELECT email FROM USERS where email = '".$email."';");
@@ -19,7 +20,7 @@
 			header("Location: incorrect_create.php");
 			exit;
 		}
-		$result = $db->query("INSERT INTO USERS (firstname, lastname, email, password, age, gender) VALUES ('{$firstname}', '{$lastname}', '{$email}', '{$password}', '{$age}', '{$gender}');");
+		$result = $db->query("INSERT INTO USERS (firstname, lastname, email, password, age, gender, image) VALUES ('{$firstname}', '{$lastname}', '{$email}', '{$password}', '{$age}', '{$gender}', '{$image}');");
 		?>
 		<h1>Account Successfully Created!</h1>
 		<a href="index.php">Return to main screen and login.</a>
