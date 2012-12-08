@@ -7,7 +7,7 @@
 	$result = $db->query("SELECT id FROM USERS WHERE email = '".$_SESSION['email']."';");
 	$userid = $result->fetch_array(MYSQLI_ASSOC);
 
-	$result = $db->query("SELECT * FROM USERS WHERE username = '".$_POST['new_friend_email']."';");
+	$result = $db->query("SELECT * FROM USERS WHERE email = '".$_POST['new_friend_email']."';");
 	$friendid = $result->fetch_array(MYSQLI_ASSOC);
 	
 	$result = $db->query("SELECT * FROM FRIENDS WHERE userid = '".$userid['id']."' and friendid = '".$friendid['id']."';");

@@ -10,7 +10,7 @@
 	<h2>Friend List</h2>
 	<table cellpadding="5">
 		<tr>
-		<th>Username</th>
+		<th>Friends</th>
 		<th></th>
 		</tr>
 		<?php
@@ -19,8 +19,11 @@
 			$friend = $newResult->fetch_array(MYSQLI_ASSOC);
 ?>
 			<tr>
-			<td><?php echo $friend['email']; ?></td>
-			<td><input type="submit" value="No functionality here!"/></td>
+			<form method="post" action="delete_friend.php">
+				<td><?php echo $friend['firstname']." ".$friend['lastname']; ?></td>
+				<input name="delete_friend_email" value="<?= $friend['email']; ?>" type="hidden"/>
+				<td><input type="submit" value="Delete <?php echo $friend['firstname']; ?>"/></td>
+			</form>
 			</tr>
 <?php
 		}
