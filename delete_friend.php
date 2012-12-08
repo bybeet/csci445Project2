@@ -1,7 +1,6 @@
 <?php
 	require('header.php');
-
-	$db = new mysqli(localhost, root, '', team06);
+	require('database.php');
 	
 	$result = $db->query("SELECT id FROM USERS WHERE email = '".$_SESSION['email']."';");
 	$userid = $result->fetch_array(MYSQLI_ASSOC);

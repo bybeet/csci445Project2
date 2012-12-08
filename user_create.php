@@ -1,6 +1,8 @@
 <?php
 	session_start();
 	
+	require('database.php');
+	
 	@ $db = new mysqli(localhost, root, '', team06);
 	$firstname = strip_tags($_POST['registration_first_name']);
 	$lastname = strip_tags($_POST['registration_last_name']);

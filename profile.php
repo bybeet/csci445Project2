@@ -1,13 +1,12 @@
 <?php
-	require('header.php')
+	require('header.php');
+	require('database.php');
 	
-	$db = new mysqli(localhost, root, '', team06);
-	$result = $db->query("SELECT id FROM USERS WHERE email = '".$_SESSION['email']."';");
-	//$result = $result->result_array();
-	var_dump($result);
+	$result = $db->query("SELECT * FROM USERS WHERE email = '".$_SESSION['email']."';");
+	$result = $result->fetch_array(MYSQLI_ASSOC);
 ?>
 		<h2>Profile - <?php echo $_SESSION['email']; ?></h2>
-		<!-- <img src="<?= $result['image']; ?>" alt="some_text"> -->
+		<img src="<?= $result['image']; ?>" alt="<?= $result['firstname']." ".$result['lastname']; ?> Profile Picture">
 		<h3>Status Updates</h3>
 	</body>
 </html>

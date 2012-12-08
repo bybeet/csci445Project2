@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS `USERS` (
   `password` varchar(30) NOT NULL,
   `age` int(3),
   `gender` varchar(6),
-  `image` blob,
+  `image_filename` varchar(90,
   PRIMARY KEY  (`id`)
 ) AUTO_INCREMENT=1 ;
 
