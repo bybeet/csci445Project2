@@ -3,8 +3,8 @@
 $host = "localhost";
 
 // Database username and pass
-$username = "root";
-$password = "";
+$username = 'root';
+$password = '';
 
 //Database on Susan username and pass
 //$username = "team06";
@@ -13,6 +13,6 @@ $password = "";
 // Name of database
 $database = "team06";
 
-@ $db = new mysqli($host, $username, $password, $db_name);
+@ $db = new mysqli($host, $username, $password, $database);
 
 ?>

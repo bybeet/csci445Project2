@@ -9,18 +9,20 @@
 		$email = strip_tags($_POST['login_email']);
 		$password = strip_tags($_POST['login_password']);
 		$result = $db->query("SELECT * FROM USERS WHERE email = '{$email}' AND password = '{$password}'");
+		var_dump($result);
 
 		if ($result->num_rows == 1) {
-			$user = $result->fetch_assoc();
+			//$user = $result->fetch_assoc();
 			$_SESSION['logged_on'] = true;
 			$_SESSION['email'] = $email;
 			header("Location: home.php");
+			exit;
 		}
 		else {
 			$_SESSION['logged_on'] = false;
 			$_SESSION['failure'] = "Failed to log in";
 			//header("Location: incorrect_user.php");	
 		}
-		$db->close();
+		//$db->close();
 	}
 ?>
