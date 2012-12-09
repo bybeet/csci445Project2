@@ -15,6 +15,8 @@
 
 	$result = $db->query($db_query);
 	$result = $result->fetch_array(MYSQLI_ASSOC);
+
+	$pic = $target.$result['image'];
 ?>
 		<h2>Profile - <?php echo $result['email']; ?></h2>
 		<img src="<?= $result['image']; ?>" alt="<?= $result['firstname']." ".$result['lastname']; ?> Profile Picture">
@@ -53,7 +55,7 @@
 		<div>
 			<form id="status_form" method="post" action="statusUpdate.php">
 				<label for="status_text">Status:</label>
-				<input type="text" id="status_text" name="status_text" />
+				<textarea rows="5" cols="30" id="status_text" name="status_text"></textarea>
 				<br />
 				<input type="submit" value="Submit" />
 			</form>
