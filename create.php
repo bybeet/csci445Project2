@@ -19,7 +19,7 @@
 		</div>
 		<div>
 			<h2>New User Registration</h2>
-			<form id="registration_form" method="post" action="user_create.php">
+			<form id="registration_form" method="post" action="user_create.php" enctype="multipart/form-data">
 				<label for="registration_first_name">First Name:
 				<input type="text" id="registration_first_name"  name="registration_first_name"/>
 				</label>
@@ -33,7 +33,7 @@
 				</label>
 				<br />
 				<label for="registration_age">Age:
-				<input type="text" id="registration_age" name="regisration_age"/>
+				<input type="text" id="registration_age" name="registration_age"/>
 				</label>
 				<label for="registration_gender">Gender:
 				<select name="registration_gender">
@@ -49,8 +49,8 @@
 				<input type="password" id="registration_password_confirm" name="registration_password_confirm"/>
 				</label>
 				<br />
-				<label for="registration_image_file">User Picture:
-				<input type="file" id="registration_image_file" accept="image/jpeg" name="registration_image_file"/>
+				<label for="photo">User Picture:
+				<input type="file" id="photo" accept="image/*" name="photo"/>
 				</label>
 				<br />
 				<input type="submit" value="Submit" />
