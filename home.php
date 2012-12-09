@@ -35,10 +35,55 @@
 				
 				$userFirstName=$userData['firstname'];
 				$userLastName=$userData['lastname'];
+				$userEmail = $userData['email'];
 				$updateTime = $currentRow['lastUpdated'];
 				$status=$currentRow['status'];
 				echo "<h3>$userFirstName $userLastName said:</h3>";
 				echo "<p>$status<br />$updateTime</p>";
+
+				$statusid = $currentRow['id'];
+				$query_string = "SELECT * FROM STATUS_COMMENTS where statusid = $statusid";
+				$comments = $db->query($query_string);
+				while( $comment = $comments->fetch_array(MYSQLI_ASSOC)){
+					$commentUserId = $comment['userid'];
+					$query_string = "SELECT * FROM USERS where id = $commentUserId;";
+					$result = $db->query($query_string);
+					$commentCreator = $result->fetch_array(MYSQLI_ASSOC);
+
+					$commenterFirstName = $commentCreator['firstname'];
+					$commenterLastName = $commentCreator['lastname'];
+					$commenterEmail = $commentCreator['email'];
+					$commentText = $comment['comment'];
+					$updateTime = $comment['lastUpdated'];
+
+					echo "<h4>$commenterFirstName $commenterLastName commented:</h4>";
+					echo "<p>$commentText<br />$updateTime</p>";
+
+					//If they created the comment or they own the status, allow them to delete comments.
+					if($_SESSION['email'] === $commenterEmail || $_SESSION['email'] === $userEmail){
+					?>
+					<form action="delete_comment.php" method="post">
+						<input name="comment_id" value="<?= $comment['id']; ?>" type="hidden"/>
+						<input type="submit" value="Delete Comment"/>
+						<input type="hidden" name="return_page" value="<?php 
+							echo "home.php";
+						?>"/>
+					</form>
+					<?php
+					}
+				}
+				?>
+				<form id="comment_form" method="post" action="add_comment.php">
+					<label for="comment_text">Comment:</label>
+					<input type="hidden" name="return_page" value="<?php 
+						echo "home.php";
+					?>"/>
+					<textarea rows="5" cols="30" id="comment_text" name="comment_text"></textarea>
+					<input type="hidden" name="statusid" value="<?= $statusid; ?>" />
+					<br />
+					<input type="submit" value="Submit Comment" />
+				</form>
+				<?php
 			}
 		?>
 
