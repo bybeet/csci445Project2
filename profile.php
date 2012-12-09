@@ -82,6 +82,14 @@
 
 				echo "<h3>$userFirstName $userLastName said:</h3>";
 				echo "<p>$status<br />$updateTime</p>";
+				if($users_profile){
+				?>
+					<form action="delete_status.php" method="post">
+						<input name="status_id" value="<?= $currentRow['id']; ?>" type="hidden"/>
+						<input type="submit" value="Delete Status"/>
+					</form>
+					<?php
+				}
 			}
 		?>
 	</body>
