@@ -57,8 +57,8 @@
 				$updateTime = $currentRow['lastUpdated'];
 				$status=$currentRow['status'];
 
-				echo "<h4>At $updateTime $userFirstName $userLastName said:</h4>";
-				echo "<p>$status</p>";
+				echo "<h3>$userFirstName $userLastName said:</h3>";
+				echo "<p>$status<br />$updateTime</p>";
 			}
 		?>
 	</body>

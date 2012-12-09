@@ -6,7 +6,7 @@
 ?>
 
 	<div>
-		<p><?php echo $_SESSION['email']; ?>, you logged in!</p>
+		<p><?php echo $_SESSION['email']; ?>, you're logged in!</p>
 	</div>
 	<h2>Status Updates</h2>
 	<?php
@@ -30,9 +30,8 @@
 				$userLastName=$userData['lastname'];
 				$updateTime = $currentRow['lastUpdated'];
 				$status=$currentRow['status'];
-
-				echo "<h4>At $updateTime $userFirstName $userLastName said:</h4>";
-				echo "<p>$status</p>";
+				echo "<h3>$userFirstName $userLastName said:</h3>";
+				echo "<p>$status<br />$updateTime</p>";
 			}
 		?>
 
