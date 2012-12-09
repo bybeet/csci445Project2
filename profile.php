@@ -39,17 +39,18 @@
 		</div>
 		<?php
 			$result = $db->query("SELECT id FROM USERS WHERE email = '".$_SESSION['email']."';");
-			$userid = $result->fetch_array(MYSQLI_ASSOC);
-			$userNum=$userid['id'];
-			$query_string="SELECT DISTINCT STATUS_UPDATES.* FROM FRIENDS, STATUS_UPDATES WHERE FRIENDS.userid =  '$userNum' AND STATUS_UPDATES.userid = FRIENDS.friendid OR STATUS_UPDATES.userid = '$userNum'";
-			$friends=$db->query($query_string);
-			$rows=$friends->num_rows;
-			for($i=0; $i<$rows; $i++){
-				$currentRow=$friends->fetch_assoc();
-				
-				$currentUserNum=$currentRow['userid'];
-				$userDbData=$db->query("SELECT * FROM USERS WHERE id = '$currentUserNum'");
-				$userData=$userDbData->fetch_assoc();
+			$userData = $result->fetch_array(MYSQLI_ASSOC);
+			$userNum = $userData['id'];
+			//$query_string = "SELECT DISTINCT STATUS_UPDATES.* FROM FRIENDS, STATUS_UPDATES WHERE FRIENDS.userid =  '$userNum' AND STATUS_UPDATES.userid = FRIENDS.friendid OR STATUS_UPDATES.userid = '$userNum'";
+			//$friends=$db->query($query_string);
+			//$rows=$friends->num_rows;
+			$query_string = "SELECT * from STATUS_UPDATES where userid = $userNum";
+			$statusUpdates = $db->query($query_string);
+			for($i=0; $i<5; $i++){
+				$currentRow=$statusUpdates->fetch_assoc();
+				if($currentRow == NULL){
+					break;
+				}
 				
 				$userFirstName=$userData['firstname'];
 				$userLastName=$userData['lastname'];

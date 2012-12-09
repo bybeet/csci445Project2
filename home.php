@@ -1,6 +1,8 @@
 <?php
 	require('header.php');	
 	require('database.php');
+
+	//Need to change so that the sql query goes from the most recently added row, then to the most recent row.
 ?>
 
 	<div>
