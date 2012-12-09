@@ -23,6 +23,7 @@ CREATE TABLE IF NOT EXISTS `STATUS_UPDATES` (
   `id` int(11) NOT NULL auto_increment,
   `userid` int(11) NOT NULL,
   `status` varchar(140) NOT NULL,
+  `lastUpdated` TIMESTAMP,
   PRIMARY KEY (`id`)
   ) AUTO_INCREMENT=1 ;
   

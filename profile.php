@@ -46,13 +46,17 @@
 			$rows=$friends->num_rows;
 			for($i=0; $i<$rows; $i++){
 				$currentRow=$friends->fetch_assoc();
+				
 				$currentUserNum=$currentRow['userid'];
 				$userDbData=$db->query("SELECT * FROM USERS WHERE id = '$currentUserNum'");
 				$userData=$userDbData->fetch_assoc();
+				
 				$userFirstName=$userData['firstname'];
 				$userLastName=$userData['lastname'];
-				$status=$currentRow['status_update'];
-				echo "<h4>$userFirstName $userLastName said:</h4>";
+				$updateTime = $currentRow['lastUpdated'];
+				$status=$currentRow['status'];
+
+				echo "<h4>At $updateTime $userFirstName $userLastName said:</h4>";
 				echo "<p>$status</p>";
 			}
 		?>
