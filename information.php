@@ -10,15 +10,15 @@
 	$userEmail=$_SESSION['email'];
 	$userFirst=$userid['firstname'];
 	$userLast=$userid['lastname'];
-	$userName=$userid['username'];
+	//$userName=$userid['username'];
 	$userPassword=$userid['password'];
 ?>
 		<h2>Update Information</h2>
 		<div>
 			<form id="information_form" method="post" action="changeInformation.php">
-				<label for="information_name">Username:</label>
+				<!-- <label for="information_name">Username:</label>
 				<input type="text" id="information_name" name="information_name" value=<?php echo "$userName" ?> />
-				<br />
+				<br /> -->
 				<label for="information_first">First name:</label>
 				<input type="text" id="information_first" name="information_first" value=<?php echo "$userFirst" ?> />
 				<br />
