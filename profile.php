@@ -93,6 +93,42 @@
 					</form>
 					<?php
 				}
+
+				$statusid = $currentRow['id'];
+				$query_string = "SELECT * FROM STATUS_COMMENTS where statusid = $statusid";
+				$comments = $db->query($query_string);
+				while( $comment = $comments->fetch_array(MYSQLI_ASSOC)){
+					$commentUserId = $comment['userid'];
+					$query_string = "SELECT * FROM USERS where id = $commentUserId;";
+					$result = $db->query($query_string);
+					$commentCreator = $result->fetch_array(MYSQLI_ASSOC);
+
+					$commenterFirstName = $commentCreator['firstname'];
+					$commenterLastName = $commentCreator['lastname'];
+					$commentText = $comment['comment'];
+					$updateTime = $comment['lastUpdated'];
+
+					echo "<h4>$commenterFirstName $commenterLastName commented:</h4>";
+					echo "<p>$commentText<br />$updateTime</p>";
+				}
+				?>
+				<form id="comment_form" method="post" action="add_comment.php">
+					<label for="comment_text">Comment:</label>
+					<input type="hidden" name="return_page" value="<?php 
+						$email = $_GET['friend_email'];
+						if($users_profile){
+							echo "profile.php";
+						}
+						else{
+							echo "profile.php?friend_email=$email";
+						}
+					?>"/>
+					<textarea rows="5" cols="30" id="comment_text" name="comment_text"></textarea>
+					<input type="hidden" name="statusid" value="<?= $statusid; ?>" />
+					<br />
+					<input type="submit" value="Submit Comment" />
+				</form>
+			<?php
 			}
 		?>
 	</body>

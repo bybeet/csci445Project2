@@ -32,5 +32,6 @@ CREATE TABLE IF NOT EXISTS `STATUS_COMMENTS` (
   `statusid` int(11) NOT NULL,
   `userid` int(11) NOT NULL,
   `comment` text NOT NULL,
+  `lastUpdated` TIMESTAMP,
     PRIMARY KEY (`id`)
   ) AUTO_INCREMENT=1 ;
