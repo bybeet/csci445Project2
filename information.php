@@ -29,10 +29,10 @@
 				<input type="text" id="information_email" name="information_email" value=<?php echo "$userEmail" ?> />
 				<br />
 				<label for="information_password">Password:</label>
-				<input type="password" id="information_password" name="information_password" value=<?php echo "$userPassword" ?> />
+				<input type="password" id="information_password" name="information_password"/>
 				<br />
 				<label for="information_password_confirm">Please confirm:</label>
-				<input type="password" id="information_password_confirm" name="information_password_confirm" value=<?php echo "$userPassword" ?> />
+				<input type="password" id="information_password_confirm" name="information_password_confirm"/>
 				<br />
 				<input type="submit" />
 			</form>

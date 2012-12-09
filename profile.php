@@ -2,12 +2,20 @@
 	require('header.php');
 	require('database.php');
 
+	$users_profile = False;
 
-	//This will need to be changed to enable users to view other users profiles.
-	$result = $db->query("SELECT * FROM USERS WHERE email = '".$_SESSION['email']."';");
+	if($_GET['friend_email'] == NULL){
+		$users_profile = True;
+		$db_query = "SELECT * FROM USERS WHERE email = '".$_SESSION['email']."';";
+	}
+	else{
+		$db_query = "SELECT * FROM USERS WHERE email = '".$_GET['friend_email']."';";
+	}
+
+	$result = $db->query($db_query);
 	$result = $result->fetch_array(MYSQLI_ASSOC);
 ?>
-		<h2>Profile - <?php echo $_SESSION['email']; ?></h2>
+		<h2>Profile - <?php echo $result['email']; ?></h2>
 		<img src="<?= $result['image']; ?>" alt="<?= $result['firstname']." ".$result['lastname']; ?> Profile Picture">
 		<h3>Information</h3>
 			<p>
@@ -28,7 +36,19 @@
 			<br />
 			Gender: <?= $result['gender']; ?>
 			</p>
+		<?php
+			if($users_profile){
+		?>
+		<div>
+			<a href="information.php">Update Information</a>
+		</div>
+		<?php
+			}
+		?>
 		<h3>Status Updates</h3>
+		<?php
+			if($users_profile){
+		?>
 		<div>
 			<form id="status_form" method="post" action="statusUpdate.php">
 				<label for="status_text">Status:</label>
@@ -38,7 +58,10 @@
 			</form>
 		</div>
 		<?php
-			$result = $db->query("SELECT * FROM USERS WHERE email = '".$_SESSION['email']."';");
+			}
+		?>
+		<?php
+			$result = $db->query("SELECT * FROM USERS WHERE email = '".$result['email']."';");
 			$userData = $result->fetch_array(MYSQLI_ASSOC);
 			$userNum = $userData['id'];
 			//$query_string = "SELECT DISTINCT STATUS_UPDATES.* FROM FRIENDS, STATUS_UPDATES WHERE FRIENDS.userid =  '$userNum' AND STATUS_UPDATES.userid = FRIENDS.friendid OR STATUS_UPDATES.userid = '$userNum'";

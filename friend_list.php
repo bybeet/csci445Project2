@@ -12,15 +12,24 @@
 		<tr>
 		<th>Friends</th>
 		<th></th>
+		<th></th>
 		</tr>
 		<?php
 		while( $row = $result->fetch_array(MYSQLI_ASSOC)){
 			$newResult = $db->query("SELECT * FROM USERS WHERE id = '".$row['friendid']."';");
 			$friend = $newResult->fetch_array(MYSQLI_ASSOC);
 ?>
+
 			<tr>
-			<form method="post" action="delete_friend.php">
 				<td><?php echo $friend['firstname']." ".$friend['lastname']; ?></td>
+				<form method="get" action="profile.php">
+					<input name="friend_email" value="<?= $friend['email']; ?>" type="hidden"/>
+				<td>
+					<input type="submit" value="View Profile"/>
+				</td>
+			</form>
+			<form method="post" action="delete_friend.php">
+				
 				<input name="delete_friend_email" value="<?= $friend['email']; ?>" type="hidden"/>
 				<td><input type="submit" value="Delete <?php echo $friend['firstname']; ?>"/></td>
 			</form>

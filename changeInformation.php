@@ -22,8 +22,8 @@
 	$newPasswordMatch=false;
 	
 	if($userConfirm != $userPassword){
-		echo "<p>Passwords do not match. Please return to information page.</p> <br />";
-		echo "<a href=\"information.php\">Information Page<\a>";
+		echo "<p>Passwords do not match. Please return to information page.</p>";
+		echo "<a href=\"information.php\">Information Page</a>";
 		exit;
 	}
 	
@@ -46,7 +46,7 @@
 	if($userLast != $userCurrentLast){
 		$userCurrentLast=$userLast;
 	}
-	if($userPassword != $userCurrentPassword){
+	if($userPassword != $userCurrentPassword && $userPassword != ""){
 		$userCurrentPassword=$userPassword;
 	}
 	$email=$_SESSION['email'];
@@ -61,5 +61,5 @@
 		$_SESSION['email']=$userCurrentEmail;
 	}
 	
-	header("Location: information.php");
+	header("Location: profile.php");
 ?>
