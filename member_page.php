@@ -9,8 +9,7 @@
 	
 ?>
 		<h2>Member Page</h2>
-<?php
-		?>
+
 		<table cellpadding="5">
 		<tr>
 		<th>Name</th>
