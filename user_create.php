@@ -12,9 +12,7 @@
 	$passwordconfirm = strip_tags($_POST['registration_password_confirm']);
 
 	$target = "images/";
-	$target = $target . basename( $_FILES['photo']['name']);
-
-	$pic = ($_FILES['photo']['name']);
+	$target = $target . $email;
 
 	if($password === $passwordconfirm){
 	//todo: need to validate the information
@@ -27,7 +25,7 @@
 			exit;
 		}
 
-		$result = $db->query("INSERT INTO USERS (firstname, lastname, email, password, age, gender, image) VALUES ('{$firstname}', '{$lastname}', '{$email}', '{$password}', '{$age}', '{$gender}', '{$pic}');");
+		$result = $db->query("INSERT INTO USERS (firstname, lastname, email, password, age, gender, image) VALUES ('{$firstname}', '{$lastname}', '{$email}', '{$password}', '{$age}', '{$gender}', '{$target}');");
 		
 		echo "<h1>Account Successfully Created!</h1>";
 
@@ -42,8 +40,9 @@
 		}
 
 		?>
-		
+		<p>
 		<a href="index.php">Return to main screen and login.</a>
+	</p>
 	<?php
 	}else{
 		//If the passwords do not match, set the post registration_password to incorrect and loaded the incorrect create page.

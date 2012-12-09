@@ -3,6 +3,7 @@
 	require('database.php');
 
 	$users_profile = False;
+	$target = "images/";
 
 	if($_GET['friend_email'] == NULL){
 		$users_profile = True;
