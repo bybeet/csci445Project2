@@ -38,13 +38,13 @@
 			</form>
 		</div>
 		<?php
-			$result = $db->query("SELECT id FROM USERS WHERE email = '".$_SESSION['email']."';");
+			$result = $db->query("SELECT * FROM USERS WHERE email = '".$_SESSION['email']."';");
 			$userData = $result->fetch_array(MYSQLI_ASSOC);
 			$userNum = $userData['id'];
 			//$query_string = "SELECT DISTINCT STATUS_UPDATES.* FROM FRIENDS, STATUS_UPDATES WHERE FRIENDS.userid =  '$userNum' AND STATUS_UPDATES.userid = FRIENDS.friendid OR STATUS_UPDATES.userid = '$userNum'";
 			//$friends=$db->query($query_string);
 			//$rows=$friends->num_rows;
-			$query_string = "SELECT * from STATUS_UPDATES where userid = $userNum";
+			$query_string = "SELECT * from STATUS_UPDATES where userid = $userNum ORDER BY id DESC";
 			$statusUpdates = $db->query($query_string);
 			for($i=0; $i<5; $i++){
 				$currentRow=$statusUpdates->fetch_assoc();
@@ -52,8 +52,8 @@
 					break;
 				}
 				
-				$userFirstName=$userData['firstname'];
-				$userLastName=$userData['lastname'];
+				$userFirstName= $userData['firstname'];
+				$userLastName= $userData['lastname'];
 				$updateTime = $currentRow['lastUpdated'];
 				$status=$currentRow['status'];
 

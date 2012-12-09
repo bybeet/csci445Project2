@@ -13,7 +13,7 @@
 			$result = $db->query("SELECT id FROM USERS WHERE email = '".$_SESSION['email']."';");
 			$userid = $result->fetch_array(MYSQLI_ASSOC);
 			$userNum=$userid['id'];
-			$query_string="SELECT DISTINCT STATUS_UPDATES.* FROM FRIENDS, STATUS_UPDATES WHERE FRIENDS.userid =  '$userNum' AND STATUS_UPDATES.userid = FRIENDS.friendid OR STATUS_UPDATES.userid = '$userNum'";
+			$query_string="SELECT DISTINCT STATUS_UPDATES.* FROM FRIENDS, STATUS_UPDATES WHERE FRIENDS.userid =  '$userNum' AND STATUS_UPDATES.userid = FRIENDS.friendid OR STATUS_UPDATES.userid = '$userNum' ORDER BY id DESC";
 			$friends=$db->query($query_string);
 			$rows=$friends->num_rows;
 			for($i=0; $i<20; $i++){

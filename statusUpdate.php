@@ -11,5 +11,6 @@
 	$userid = $result->fetch_array(MYSQLI_ASSOC);
 	$status_update = $_POST['status_text'];
 	$result = $db->query("INSERT INTO STATUS_UPDATES (userid, status) VALUES ('{$userid['id']}', '{$status_update}');");
+	header('Location: profile.php');
 	exit;
 ?>
