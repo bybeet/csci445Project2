@@ -105,11 +105,30 @@
 
 					$commenterFirstName = $commentCreator['firstname'];
 					$commenterLastName = $commentCreator['lastname'];
+					$commenterEmail = $commentCreator['email'];
 					$commentText = $comment['comment'];
 					$updateTime = $comment['lastUpdated'];
 
 					echo "<h4>$commenterFirstName $commenterLastName commented:</h4>";
 					echo "<p>$commentText<br />$updateTime</p>";
+
+					if($users_profile || $_SESSION['email'] === $commenterEmail){
+					?>
+					<form action="delete_comment.php" method="post">
+						<input name="comment_id" value="<?= $comment['id']; ?>" type="hidden"/>
+						<input type="submit" value="Delete Comment"/>
+						<input type="hidden" name="return_page" value="<?php 
+						$email = $_GET['friend_email'];
+						if($users_profile){
+							echo "profile.php";
+						}
+						else{
+							echo "profile.php?friend_email=$email";
+						}
+					?>"/>
+					</form>
+					<?php
+					}
 				}
 				?>
 				<form id="comment_form" method="post" action="add_comment.php">
