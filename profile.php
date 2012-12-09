@@ -2,11 +2,32 @@
 	require('header.php');
 	require('database.php');
 
+
+	//This will need to be changed to enable users to view other users profiles.
 	$result = $db->query("SELECT * FROM USERS WHERE email = '".$_SESSION['email']."';");
 	$result = $result->fetch_array(MYSQLI_ASSOC);
 ?>
 		<h2>Profile - <?php echo $_SESSION['email']; ?></h2>
 		<img src="<?= $result['image']; ?>" alt="<?= $result['firstname']." ".$result['lastname']; ?> Profile Picture">
+		<h3>Information</h3>
+			<p>
+				Name: <?= $result['firstname']." ".$result['lastname']; ?>
+				<br />
+				Email: <?= $result['email']; ?>
+				<br />
+				Age: 
+			<?php 
+				if( $result['age'] != NULL ){
+					echo $result['age']; 
+				}
+				else{
+					echo "Not given";
+				}
+
+			?>
+			<br />
+			Gender: <?= $result['gender']; ?>
+			</p>
 		<h3>Status Updates</h3>
 		<div>
 			<form id="status_form" method="post" action="statusUpdate.php">
