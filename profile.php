@@ -35,6 +35,5 @@
 				echo "<p>$status</p>";
 			}
 		?>
-		</div>
 	</body>
 </html>

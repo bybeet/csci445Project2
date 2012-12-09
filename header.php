@@ -23,6 +23,8 @@
 			<br />
 			<a href="profile.php">Your Profile</a>
 			<br />
+			<a href="information.php">Your Information</a>
+			<br />
 			<a href="friend_list.php">Friend List</a>
 			<br />
 			<a href="member_page.php">Member Page</a>

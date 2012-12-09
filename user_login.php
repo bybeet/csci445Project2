@@ -21,7 +21,7 @@
 		else {
 			$_SESSION['logged_on'] = false;
 			$_SESSION['failure'] = "Failed to log in";
-			//header("Location: incorrect_user.php");	
+			header("Location: incorrect_user.php");	
 		}
 		//$db->close();
 	}
