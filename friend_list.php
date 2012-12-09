@@ -15,6 +15,7 @@
 		<th></th>
 		</tr>
 		<?php
+		//Iterate through all rows returned by the database query.
 		while( $row = $result->fetch_array(MYSQLI_ASSOC)){
 			$newResult = $db->query("SELECT * FROM USERS WHERE id = '".$row['friendid']."';");
 			$friend = $newResult->fetch_array(MYSQLI_ASSOC);

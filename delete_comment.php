@@ -1,4 +1,5 @@
 <?php
+	//Delete the comment identified by the id in $_POST and return to previous page.
 	require('header.php');
 	require('database.php');
 

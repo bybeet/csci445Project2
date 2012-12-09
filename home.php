@@ -2,6 +2,7 @@
 	require('header.php');	
 	require('database.php');
 
+	//Query the current user from the database.
 	$result = $db->query("SELECT * FROM USERS WHERE email = '".$_SESSION['email']."';");
 	$userData = $result->fetch_array(MYSQLI_ASSOC);
 
@@ -12,19 +13,24 @@
 	</div>
 	<h2>Status Updates</h2>
 	<?php
-			
+			//Get status updates from user and the users friends.	
 			$userNum=$userData['id'];
 			$query_string="SELECT DISTINCT STATUS_UPDATES.* FROM FRIENDS, STATUS_UPDATES WHERE FRIENDS.userid =  '$userNum' AND STATUS_UPDATES.userid = FRIENDS.friendid OR STATUS_UPDATES.userid = '$userNum' ORDER BY id DESC";
 			$friends=$db->query($query_string);
+			//If the user has no friends or status updates, show them a little note
+			//to help them get started.
 			if($friends->num_rows == 0){
 				echo "<p>Post a 
 					<a href=\"profile.php\">status</a> or add a 
 					<a href=\"member_page.php\">friend</a> to see
 					status updates.</p>";
 			}
-			$rows=$friends->num_rows;
+
+			//Show the 20 most recent status updates.
 			for($i=0; $i<20; $i++){
-				$currentRow=$friends->fetch_assoc();
+				$currentRow = $friends->fetch_assoc();
+				//If there are less than 20, display them all,
+				//then exit the for loop.
 				if($currentRow == NULL){
 					break;
 				}
@@ -41,6 +47,8 @@
 				echo "<h3>$userFirstName $userLastName said:</h3>";
 				echo "<p>$status<br />$updateTime</p>";
 
+				//Hideous code for showing the comments for each status. Logic
+				// nearly identical to comment logic in profile.php
 				$statusid = $currentRow['id'];
 				$query_string = "SELECT * FROM STATUS_COMMENTS where statusid = $statusid";
 				$comments = $db->query($query_string);

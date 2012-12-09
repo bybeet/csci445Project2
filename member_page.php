@@ -26,6 +26,9 @@
 				<td><?= $row['firstname']." ".$row['lastname']; ?></td>
 				<td><?php echo $row["email"]; ?></td>
 				<?php
+					//Check to see if the member is already a friend of the user.
+					//If they are, then change the button text and logic to take them to that
+					//member's profile page.
 					$alreadyFriend = $db->query("SELECT * FROM FRIENDS where userid = '".$userData['id']."' and friendid ='".$row['id']."';");
 					if($alreadyFriend->num_rows == 0){
 				?>

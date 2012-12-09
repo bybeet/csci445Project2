@@ -5,6 +5,10 @@
 	$users_profile = False;
 	$target = "images/";
 
+	//Check to see if this is the current users profile or
+	//if the profile is being viewed by a different user.
+	//		This determines if the editing buttons are shown to
+	//		the user.
 	if($_GET['friend_email'] == NULL){
 		$users_profile = True;
 		$db_query = "SELECT * FROM USERS WHERE email = '".$_SESSION['email']."';";
@@ -13,9 +17,11 @@
 		$db_query = "SELECT * FROM USERS WHERE email = '".$_GET['friend_email']."';";
 	}
 
+	//Get current profile page info from database.
 	$result = $db->query($db_query);
 	$result = $result->fetch_array(MYSQLI_ASSOC);
 
+	//Set picture location.
 	$pic = $target.$result['image'];
 ?>
 		<h2>Profile - <?php echo $result['email']; ?></h2>
@@ -40,6 +46,7 @@
 			Gender: <?= $result['gender']; ?>
 			</p>
 		<?php
+			//Show the edit option if it is the user's profile
 			if($users_profile){
 		?>
 		<div>
@@ -50,6 +57,7 @@
 		?>
 		<h3>Status Updates</h3>
 		<?php
+			//Show status update box if this is user's profile.
 			if($users_profile){
 		?>
 		<div>
@@ -64,24 +72,24 @@
 			}
 		?>
 		<?php
-			$result = $db->query("SELECT * FROM USERS WHERE email = '".$result['email']."';");
-			$userData = $result->fetch_array(MYSQLI_ASSOC);
-			$userNum = $userData['id'];
-			//$query_string = "SELECT DISTINCT STATUS_UPDATES.* FROM FRIENDS, STATUS_UPDATES WHERE FRIENDS.userid =  '$userNum' AND STATUS_UPDATES.userid = FRIENDS.friendid OR STATUS_UPDATES.userid = '$userNum'";
-			//$friends=$db->query($query_string);
-			//$rows=$friends->num_rows;
+			//Get all of the profiles status updates.
+			$userNum = $result['id'];
 			$query_string = "SELECT * from STATUS_UPDATES where userid = $userNum ORDER BY id DESC";
 			$statusUpdates = $db->query($query_string);
+			//Display the 5 most recent statuses.
 			for($i=0; $i<5; $i++){
 				$currentRow=$statusUpdates->fetch_assoc();
+				//If there are less than 5, then exit the loop after all statuses have
+				//been used.
 				if($currentRow == NULL){
 					break;
 				}
 				
-				$userFirstName= $userData['firstname'];
-				$userLastName= $userData['lastname'];
+				//Set variables for posting to new pages.
+				$userFirstName= $result['firstname'];
+				$userLastName= $result['lastname'];
 				$updateTime = $currentRow['lastUpdated'];
-				$status=$currentRow['status'];
+				$status = $currentRow['status'];
 
 				echo "<h3>$userFirstName $userLastName said:</h3>";
 				echo "<p>$status<br />$updateTime</p>";
@@ -94,14 +102,16 @@
 					<?php
 				}
 
+				//Get status id for comments posting.
 				$statusid = $currentRow['id'];
 				$query_string = "SELECT * FROM STATUS_COMMENTS where statusid = $statusid";
 				$comments = $db->query($query_string);
 				while( $comment = $comments->fetch_array(MYSQLI_ASSOC)){
+					//Get the user who made the comment info.
 					$commentUserId = $comment['userid'];
 					$query_string = "SELECT * FROM USERS where id = $commentUserId;";
-					$result = $db->query($query_string);
-					$commentCreator = $result->fetch_array(MYSQLI_ASSOC);
+					$commentCreator = $db->query($query_string);
+					$commentCreator = $commentCreator->fetch_array(MYSQLI_ASSOC);
 
 					$commenterFirstName = $commentCreator['firstname'];
 					$commenterLastName = $commentCreator['lastname'];
@@ -112,12 +122,16 @@
 					echo "<h4>$commenterFirstName $commenterLastName commented:</h4>";
 					echo "<p>$commentText<br />$updateTime</p>";
 
+					//If the user created comment or this is their profile, let them
+					//delete the status.
 					if($users_profile || $_SESSION['email'] === $commenterEmail){
 					?>
 					<form action="delete_comment.php" method="post">
 						<input name="comment_id" value="<?= $comment['id']; ?>" type="hidden"/>
 						<input type="submit" value="Delete Comment"/>
 						<input type="hidden" name="return_page" value="<?php 
+						//Set the profile page to return to, either the users profile
+						// or a users friend's profile.
 						$email = $_GET['friend_email'];
 						if($users_profile){
 							echo "profile.php";
@@ -134,6 +148,7 @@
 				<form id="comment_form" method="post" action="add_comment.php">
 					<label for="comment_text">Comment:</label>
 					<input type="hidden" name="return_page" value="<?php 
+						//Same return_page logic as above.
 						$email = $_GET['friend_email'];
 						if($users_profile){
 							echo "profile.php";
