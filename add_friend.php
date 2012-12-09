@@ -24,6 +24,6 @@
 </html>
 <?php
 	}
-	$result->free();
+	//$result->free();
 	$db->close();
 ?>
