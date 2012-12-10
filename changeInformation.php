@@ -15,10 +15,11 @@
 	$userConfirm=$_POST['information_password_confirm'];
         
 	
-	$result = $db->query("SELECT * FROM USERS WHERE email = '".$_SESSION['email']."';");
+	$result = $db->query("SELECT * FROM USERS WHERE id = '".$_SESSION['id']."';");
 	$userid = $result->fetch_array(MYSQLI_ASSOC);
 	$emailModified=false;
 	$newPasswordMatch=false;
+        $sessionid = $_SESSION['id'];
 	
 	if($userConfirm != $userPassword){
 		echo "<p>Passwords do not match. Please return to information page.</p>";
@@ -26,7 +27,7 @@
 		exit;
 	}
 	
-	$userCurrentEmail=$_SESSION['email'];
+	$userCurrentEmail=$userid['email'];
 	$userCurrentFirst=$userid['firstname'];
 	$userCurrentLast=$userid['lastname'];
 	$userCurrentPassword=$userid['password'];
@@ -50,14 +51,14 @@
 	}
 	$email=$_SESSION['email'];
 	
-	$query="UPDATE USERS SET firstname='$userCurrentFirst', lastname='$userCurrentLast', email='$userCurrentEmail', password='$userCurrentPassword' WHERE email='$email';";
+	$query="UPDATE USERS SET firstname='$userCurrentFirst', lastname='$userCurrentLast', email='$userCurrentEmail', password='$userCurrentPassword' WHERE id=$sessionid;";
 	$result=$db->query($query);
 
 	if($emailModified){
 		session_destroy();
 		session_start();
 		$_SESSION['logged_on'] = true;
-		$_SESSION['email']=$userCurrentEmail;
+		$_SESSION['id']=$sessionid;
 	}
 	
 	header("Location: profile.php");
