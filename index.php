@@ -16,7 +16,7 @@
 	</head>
 	<body>
             <div>
-                <img source="images/index.jpeg" alt="not_facebook"/>
+                <img src="page_images/not2.png" alt="not_facebook"/>
             </div>
 		<div>
 			<h1>Welcome to NFb!</h1>

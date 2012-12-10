@@ -13,12 +13,13 @@
 	<head>
 		<title>Not Facebook</title>
         <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+		<link rel="stylesheet" href="style/header.css" type="text/css" />
 	</head>
 	<body>
-		<div>
+		<div class="header">
 			<h1>The Not Facebook</h1>
 		</div>
-		<div>
+		<div class="header">
 			<a href="home.php">Home</a>
 			<br />
 			<a href="profile.php">Your Profile</a>
