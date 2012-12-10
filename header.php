@@ -24,6 +24,8 @@
 			<a href="profile.php">Your Profile</a>
 			<br />
 			<a href="friend_list.php">Friend List</a>
+                        <br />
+			<a href="friend_requests.php">Friend Requests</a>
 			<br />
 			<a href="member_page.php">Member Page</a>
 			<br />

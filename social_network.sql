@@ -35,3 +35,11 @@ CREATE TABLE IF NOT EXISTS `STATUS_COMMENTS` (
   `lastUpdated` TIMESTAMP,
     PRIMARY KEY (`id`)
   ) AUTO_INCREMENT=1 ;
+
+CREATE TABLE IF NOT EXISTS `REQUESTS` (
+  `id` int(11) NOT NULL auto_increment,
+  `userid` int(11) NOT NULL,
+  `requesterid` int(11) NOT NULL,
+  `resolved` int (11) NOT NULL,
+  PRIMARY KEY (`id`)
+  ) AUTO_INCREMENT=1 ;
