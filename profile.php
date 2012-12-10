@@ -96,7 +96,7 @@
 				$status = $currentRow['status'];
 
 				echo "<h3>$userFirstName $userLastName said:</h3>";
-				echo "<p>$status<br />$updateTime</p>";
+				echo "<p class=\"status_text\">$status</p><p class=\"status_time\">$updateTime</p>";
 				if($users_profile){
 				?>
 					<form action="delete_status.php" method="post">
