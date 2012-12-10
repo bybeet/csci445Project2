@@ -3,13 +3,13 @@
 
 	require('database.php');
 
-	$firstname = mysql_real_escape_string(strip_tags($_POST['registration_first_name']));
-	$lastname = mysql_real_escape_string(strip_tags($_POST['registration_last_name']));
-	$age = mysql_real_escape_string(strip_tags($_POST['registration_age']));
-	$gender = mysql_real_escape_string(strip_tags($_POST['registration_gender']));
-	$email = mysql_real_escape_string(strip_tags($_POST['registration_email']));
-	$password = mysql_real_escape_string(strip_tags($_POST['registration_password']));
-	$passwordconfirm = mysql_real_escape_string(strip_tags($_POST['registration_password_confirm']));
+	$firstname = strip_tags($_POST['registration_first_name']);
+	$lastname = strip_tags($_POST['registration_last_name']);
+	$age = strip_tags($_POST['registration_age']);
+	$gender = strip_tags($_POST['registration_gender']);
+	$email = strip_tags($_POST['registration_email']);
+	$password = strip_tags($_POST['registration_password']);
+	$passwordconfirm = strip_tags($_POST['registration_password_confirm']);
         
         if($firstname == "" || $lastname == "" || $age == "" || $email == ""){
             header("Location: incorrect_create.php");

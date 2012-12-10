@@ -10,7 +10,9 @@
 	require('database.php');
 	$userFirst=mysql_real_escape_string($_POST['information_first']);
 	$userLast=mysql_real_escape_string($_POST['information_last']);
-	$userEmail=mysql_real_escape_string($_POST['information_email']);
+	$userAge=mysql_real_escape_string($_POST['information_age']);
+        $userGender=mysql_real_escape_string($_POST['information_gender']);
+        $userEmail=mysql_real_escape_string($_POST['information_email']);
 	$userPassword=mysql_real_escape_string($_POST['information_password']);
 	$userConfirm=mysql_real_escape_string($_POST['information_password_confirm']);
         
@@ -29,13 +31,19 @@
 	
 	$userCurrentEmail=$userid['email'];
 	$userCurrentFirst=$userid['firstname'];
+        $userCurrentAge=$userid['age'];
+        $userCurrentGender=$userid['gender'];
 	$userCurrentLast=$userid['lastname'];
 	$userCurrentPassword=$userid['password'];
-	echo $userCurrentEmail;
-        echo $userCurrentFirst;
-        echo $userCurrentLast;
-        echo $userCurrentPassword;
 	
+        if($userAge != $userCurrentAge){
+            $userCurrentAge = $userAge;
+        }
+        
+        if($userGender != $userCurrentGender){
+            $userCurrentGender = $userGender;
+        }
+        
 	if($userEmail != $userCurrentEmail){
 		$userCurrentEmail=$userEmail;
 		$emailModified=true;
@@ -51,7 +59,7 @@
 	}
 	$email=$_SESSION['email'];
 	
-	$query="UPDATE USERS SET firstname='$userCurrentFirst', lastname='$userCurrentLast', email='$userCurrentEmail', password='$userCurrentPassword' WHERE id=$sessionid;";
+	$query="UPDATE USERS SET firstname='$userCurrentFirst', lastname='$userCurrentLast', email='$userCurrentEmail', password='$userCurrentPassword', age='$userCurrentAge', gender='$userCurrentGender' WHERE id=$sessionid;";
 	$result=$db->query($query);
 
 	if($emailModified){
