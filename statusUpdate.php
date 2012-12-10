@@ -7,7 +7,7 @@
 		exit;
 	}
 	require('database.php');
-	$status_update = $_POST['status_text'];
+	$status_update = mysql_real_escape_string($_POST['status_text']);
 	$result = $db->query("INSERT INTO STATUS_UPDATES (userid, status) VALUES ('{$_SESSION['id']}', '{$status_update}');");
 	header('Location: profile.php');
 	exit;

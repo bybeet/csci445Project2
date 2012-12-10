@@ -8,11 +8,11 @@
 	}
 	
 	require('database.php');
-	$userFirst=$_POST['information_first'];
-	$userLast=$_POST['information_last'];
-	$userEmail=$_POST['information_email'];
-	$userPassword=$_POST['information_password'];
-	$userConfirm=$_POST['information_password_confirm'];
+	$userFirst=mysql_real_escape_string($_POST['information_first']);
+	$userLast=mysql_real_escape_string($_POST['information_last']);
+	$userEmail=mysql_real_escape_string($_POST['information_email']);
+	$userPassword=mysql_real_escape_string($_POST['information_password']);
+	$userConfirm=mysql_real_escape_string($_POST['information_password_confirm']);
         
 	
 	$result = $db->query("SELECT * FROM USERS WHERE id = '".$_SESSION['id']."';");
