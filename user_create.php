@@ -11,6 +11,11 @@
 	$password = strip_tags($_POST['registration_password']);
 	$passwordconfirm = strip_tags($_POST['registration_password_confirm']);
         
+        if($firstname == "" || $lastname == "" || $age == "" || $email == ""){
+            header("Location: incorrect_create.php");
+            exit;
+        }
+        
 	$target = "images/";
 	$target = $target . $email;
 
