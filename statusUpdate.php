@@ -7,10 +7,8 @@
 		exit;
 	}
 	require('database.php');
-	$result = $db->query("SELECT id FROM USERS WHERE email = '".$_SESSION['email']."';");
-	$userid = $result->fetch_array(MYSQLI_ASSOC);
 	$status_update = $_POST['status_text'];
-	$result = $db->query("INSERT INTO STATUS_UPDATES (userid, status) VALUES ('{$userid['id']}', '{$status_update}');");
+	$result = $db->query("INSERT INTO STATUS_UPDATES (userid, status) VALUES ('{$_SESSION['id']}', '{$status_update}');");
 	header('Location: profile.php');
 	exit;
 ?>

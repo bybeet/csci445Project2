@@ -30,7 +30,7 @@
             }
         }
         
-	$result = $db->query("SELECT * FROM USERS WHERE email = '".$_SESSION['email']."';");
+	$result = $db->query("SELECT * FROM USERS WHERE id = '".$_SESSION['id']."';");
 	$userData = $result->fetch_array(MYSQLI_ASSOC);
         if($where_used){
             $result = $db->query("SELECT * FROM USERS " . $where_statement);
@@ -63,7 +63,7 @@
 		</tr>
 		<?php
 		while( $row = $result->fetch_array(MYSQLI_ASSOC)){
-			if($row['email'] == $_SESSION['email']){
+			if($row['id'] == $_SESSION['id']){
 				continue;
 			}
 			?>

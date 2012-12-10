@@ -6,7 +6,7 @@
 	$statusid = $_POST['statusid'];
 	$comment = $_POST['comment_text'];
 
-	$db_query = "SELECT * FROM USERS WHERE email = '".$_SESSION['email']."';";
+	$db_query = "SELECT * FROM USERS WHERE id = '".$_SESSION['id']."';";
 	$result = $db->query($db_query);
 	$result = $result->fetch_array(MYSQLI_ASSOC);
 

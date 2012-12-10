@@ -2,12 +2,11 @@
 	require('header.php');	
 	require('database.php');
 	
-	
-	$result = $db->query("SELECT * FROM USERS WHERE email = '".$_SESSION['email']."';");
+	$result = $db->query("SELECT * FROM USERS WHERE id = '".$_SESSION['id']."';");
 	$userid = $result->fetch_array(MYSQLI_ASSOC);
 	$userNum=$userid['id'];
 	
-	$userEmail=$_SESSION['email'];
+	$userEmail=$userid['email'];
 	$userFirst=$userid['firstname'];
 	$userLast=$userid['lastname'];
 	//$userName=$userid['username'];
