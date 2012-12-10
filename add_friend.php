@@ -7,16 +7,13 @@
 	}
 	//require('header.php');
 	require('database.php');
-	
-	$result = $db->query("SELECT id FROM USERS WHERE id = '".$_SESSION['id']."';");
-	$userid = $result->fetch_array(MYSQLI_ASSOC);
 
-	$result = $db->query("INSERT INTO FRIENDS (userid, friendid) VALUES ('{$userid['id']}', '{$_POST['new_friend_id']}');");
+	$result = $db->query("INSERT INTO REQUESTS (userid, requesterid, resolved) VALUES ('{$_POST['new_friend_id']}', '{$_SESSION['id']}', 0);");
 	/*if($_POST['return_page'] === "friend_list.php"){
 		header('Location: friend_list.php');
 	}
 	else{
-		header('Location: member_page.php');
+		header('Location: friend_search.php');
 	}*/
 	$returnPage = $_POST['return_page'];
 	header("Location: $returnPage");

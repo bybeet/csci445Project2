@@ -1,8 +1,8 @@
 <?php
 	session_start();
-	
+
 	require('database.php');
-	
+
 	$firstname = strip_tags($_POST['registration_first_name']);
 	$lastname = strip_tags($_POST['registration_last_name']);
 	$age = strip_tags($_POST['registration_age']);
@@ -10,15 +10,7 @@
 	$email = strip_tags($_POST['registration_email']);
 	$password = strip_tags($_POST['registration_password']);
 	$passwordconfirm = strip_tags($_POST['registration_password_confirm']);
-        $to = "recipient@example.com";
-        $subject = "Hi!";
-        $body = "Hi,\n\nHow are you?";
-        if (mail($to, $subject, $body)) {
-          echo("<p>Message successfully sent!</p>");
-         } else {
-          echo("<p>Message delivery failed...</p>");
-         }
-
+        
 	$target = "images/";
 	$target = $target . $email;
 
@@ -34,7 +26,7 @@
 		}
 
 		$result = $db->query("INSERT INTO USERS (firstname, lastname, email, password, age, gender, image_filename) VALUES ('{$firstname}', '{$lastname}', '{$email}', '{$password}', '{$age}', '{$gender}', '{$target}');");
-		
+
 		echo "<h1>Account Successfully Created!</h1>";
 
 		if(move_uploaded_file($_FILES['photo']['tmp_name'], $target))

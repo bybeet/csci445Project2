@@ -22,7 +22,7 @@
 			if($friends->num_rows == 0){
 				echo "<p>Post a 
 					<a href=\"profile.php\">status</a> or add a 
-					<a href=\"member_page.php\">friend</a> to see
+					<a href=\"friend_search.php\">friend</a> to see
 					status updates.</p>";
 			}
 
