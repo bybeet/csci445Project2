@@ -2,14 +2,59 @@
 
 	require('header.php');
 	require('database.php');
-
+        
+        $firstname = strip_tags($_POST['search_first_name']);
+	$lastname = strip_tags($_POST['search_last_name']);
+	$email = strip_tags($_POST['search_email']);
+        $where_statement = "WHERE ";
+        $where_used = false;
+        
+        if($firstname != ""){
+            $where_statement = $where_statement . "firstname = '" . $firstname . "'";
+            $where_used = true;
+        }
+        if($lastname != ""){
+            if(!$where_used){
+                $where_statement = $where_statement . "lastname = '" . $lastname . "'";
+                $where_used = true;
+            }else{
+                $where_statement = $where_statement . " AND lastname = '" . $lastname . "'";
+            }
+        }
+        if($email != ""){
+            if(!$where_used){
+                $where_statement = $where_statement . "email = '" . $email . "'";
+                $where_used = true;
+            }else{
+                $where_statement = $where_statement . " AND email = '" . $email . "'";
+            }
+        }
+        
 	$result = $db->query("SELECT * FROM USERS WHERE email = '".$_SESSION['email']."';");
 	$userData = $result->fetch_array(MYSQLI_ASSOC);
-	$result = $db->query("SELECT * FROM USERS");
+        if($where_used){
+            $result = $db->query("SELECT * FROM USERS " . $where_statement);
+        }else{
+            $result = $db->query("SELECT * FROM USERS");
+        }
 	
 ?>
 		<h2>Member Page</h2>
-
+                <form id="registration_form" method="post" action="member_page.php" enctype="multipart/form-data">
+                        <label for="registration_first_name">First Name:
+                        <input type="text" id="search_first_name"  name="search_first_name"/>
+                        </label>
+                        <br />
+                        <label for="registration_last_name">Last Name:
+                        <input type="text" id="search_last_name" name="search_last_name"/>
+                        </label>
+                        <br />
+                        <label for="registration_email">Email Address:
+                        <input type="text" id="search_email" name="search_email"/>
+                        </label>
+                        <br />
+                        <input type="submit" value="Submit" />                        
+                </form>
 		<table cellpadding="5">
 		<tr>
 		<th>Name</th>

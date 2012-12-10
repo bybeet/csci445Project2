@@ -17,7 +17,6 @@
 	
 	$result = $db->query("SELECT * FROM USERS WHERE email = '".$_SESSION['email']."';");
 	$userid = $result->fetch_array(MYSQLI_ASSOC);
-	
 	$emailModified=false;
 	$newPasswordMatch=false;
 	
@@ -32,6 +31,11 @@
 	$userCurrentLast=$userid['lastname'];
 	$userCurrentName=$userid['username'];
 	$userCurrentPassword=$userid['password'];
+	echo $userCurrentEmail;
+        echo $userCurrentFirst;
+        echo $userCurrentLast;
+        echo $userCurrentName;
+        echo $userCurrentPassword;
 	
 	if($userEmail != $userCurrentEmail){
 		$userCurrentEmail=$userEmail;

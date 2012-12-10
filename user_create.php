@@ -10,6 +10,14 @@
 	$email = strip_tags($_POST['registration_email']);
 	$password = strip_tags($_POST['registration_password']);
 	$passwordconfirm = strip_tags($_POST['registration_password_confirm']);
+        $to = "recipient@example.com";
+        $subject = "Hi!";
+        $body = "Hi,\n\nHow are you?";
+        if (mail($to, $subject, $body)) {
+          echo("<p>Message successfully sent!</p>");
+         } else {
+          echo("<p>Message delivery failed...</p>");
+         }
 
 	$target = "images/";
 	$target = $target . $email;
@@ -25,7 +33,7 @@
 			exit;
 		}
 
-		$result = $db->query("INSERT INTO USERS (firstname, lastname, email, password, age, gender, image) VALUES ('{$firstname}', '{$lastname}', '{$email}', '{$password}', '{$age}', '{$gender}', '{$target}');");
+		$result = $db->query("INSERT INTO USERS (firstname, lastname, email, password, age, gender, image_filename) VALUES ('{$firstname}', '{$lastname}', '{$email}', '{$password}', '{$age}', '{$gender}', '{$target}');");
 		
 		echo "<h1>Account Successfully Created!</h1>";
 

@@ -4,7 +4,7 @@ $host = "localhost";
 
 // Database username and pass
 $username = 'root';
-$password = '';
+$password = 'insane1';
 
 //Database on Susan username and pass
 //$username = "team06";
