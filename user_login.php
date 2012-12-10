@@ -8,8 +8,8 @@
 	}else{
 		$email = strip_tags($_POST['login_email']);
 		$password = strip_tags($_POST['login_password']);
-		$result = $db->query("SELECT * FROM USERS WHERE email = '{$email}' AND password = '{$password}'");
-                $userArr = $result->fetch_array(MYSQLI_ASSOC);
+		$result = $db->query("SELECT * FROM USERS WHERE email = '$email' AND password = '$password'");
+        $userArr = $result->fetch_array(MYSQLI_ASSOC);
 		//var_dump($result);
 
 		if ($result->num_rows == 1) {

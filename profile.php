@@ -73,15 +73,15 @@
 		?>
 		<?php
 			//Get all of the profiles status updates.
-			$userNum = $result['id'];
-			$query_string = "SELECT * from STATUS_UPDATES where userid = $userNum ORDER BY id DESC";
+			$userNum = $_SESSION['id'];//$result['id'];
+			$query_string = "SELECT * from STATUS_UPDATES where userid = '$userNum' ORDER BY id DESC";
 			$statusUpdates = $db->query($query_string);
 			//Display the 5 most recent statuses.
 			$numberOfStatuses=$statusUpdates->num_rows;
 			if($numberOfStatuses>5){
 				$numberOfStatuses=5;
 			}
-			for($i=0; $i<$numberOfStatuses; $i++){
+			for($i=0; $i<1; $i++){
 				$currentRow=$statusUpdates->fetch_assoc();
 				//If there are less than 5, then exit the loop after all statuses have
 				//been used.
@@ -123,8 +123,8 @@
 					$commentText = $comment['comment'];
 					$updateTime = $comment['lastUpdated'];
 
-					echo "<h4>$commenterFirstName $commenterLastName commented:</h4>";
-					echo "<p>$commentText<br />$updateTime</p>";
+					echo "<h4 class=\"comments\">$commenterFirstName $commenterLastName commented:</h4>";
+					echo "<p class=\"comments\">$commentText<br />$updateTime</p>";
 
 					//If the user created comment or this is their profile, let them
 					//delete the status.

@@ -45,7 +45,7 @@
 				$updateTime = $currentRow['lastUpdated'];
 				$status=$currentRow['status'];
 				echo "<h3>$userFirstName $userLastName said:</h3>";
-				echo "<p>$status<br />$updateTime</p>";
+				echo "<p class=\"status_text\">$status</p><p class=\"status_time\">$updateTime</p>";
 
 				//Hideous code for showing the comments for each status. Logic
 				// nearly identical to comment logic in profile.php
@@ -64,13 +64,13 @@
 					$commentText = $comment['comment'];
 					$updateTime = $comment['lastUpdated'];
 
-					echo "<h4>$commenterFirstName $commenterLastName commented:</h4>";
-					echo "<p>$commentText<br />$updateTime</p>";
+					echo "<h4 class=\"comments\">$commenterFirstName $commenterLastName commented:</h4>";
+					echo "<p class=\"comments\">$commentText<br />$updateTime</p>";
 
 					//If they created the comment or they own the status, allow them to delete comments.
 					if($_SESSION['id'] === $commentUserId || $_SESSION['id'] === $currentUserNum){
 					?>
-					<form action="delete_comment.php" method="post">
+					<form class="comments" action="delete_comment.php" method="post">
 						<input name="comment_id" value="<?= $comment['id']; ?>" type="hidden"/>
 						<input type="submit" value="Delete Comment"/>
 						<input type="hidden" name="return_page" value="<?php 
@@ -81,11 +81,12 @@
 					}
 				}
 				?>
-				<form id="comment_form" method="post" action="add_comment.php">
+				<form class="comments" id="comment_form" method="post" action="add_comment.php">
 					<label for="comment_text">Comment:</label>
 					<input type="hidden" name="return_page" value="<?php 
 						echo "home.php";
 					?>"/>
+					<br />
 					<textarea rows="5" cols="30" id="comment_text" name="comment_text"></textarea>
 					<input type="hidden" name="statusid" value="<?= $statusid; ?>" />
 					<br />
