@@ -1,6 +1,12 @@
 <?php
+	session_start();
+
+	if ($_SESSION['logged_on'] == false) {
+		header("Location: index.php");
+		exit;
+	}
 	//Delete the comment identified by the id in $_POST and return to previous page.
-	require('header.php');
+	//require('header.php');
 	require('database.php');
 
 	$commentId = $_POST['comment_id'];
