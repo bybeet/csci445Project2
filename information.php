@@ -27,6 +27,15 @@
 				<label for="information_email">Email:</label>
 				<input type="text" id="information_email" name="information_email" value=<?php echo "$userEmail" ?> />
 				<br />
+                                <label for="information_age">Age:
+				<input type="text" id="information_age" name="registration_age" value="<?php echo $userid['age'] ?>"/>
+				</label>
+				<label for="information_age">Gender:
+				<select name="information_age">
+				<option value="male" <?php if($userid['gender'] === "male"){?>selected<?}?>>Male</option>
+				<option value="female" <?php if($userid['gender'] === "female"){?>selected<?}?>>Female</option>
+				</select>
+				<br />
 				<label for="information_password">Password:</label>
 				<input type="password" id="information_password" name="information_password"/>
 				<br />

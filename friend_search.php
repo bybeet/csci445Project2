@@ -3,9 +3,9 @@
 	require('header.php');
 	require('database.php');
         
-        $firstname = strip_tags($_POST['search_first_name']);
-	$lastname = strip_tags($_POST['search_last_name']);
-	$email = strip_tags($_POST['search_email']);
+        $firstname = mysql_real_escape_string(strip_tags($_POST['search_first_name']));
+	$lastname = mysql_real_escape_string(strip_tags($_POST['search_last_name']));
+	$email = mysql_real_escape_string(strip_tags($_POST['search_email']));
         $where_statement = "WHERE ";
         $where_used = false;
         

@@ -5,7 +5,7 @@
 
 	$statusid = $_POST['statusid'];
 	$comment = $_POST['comment_text'];
-
+        $comment = mysql_real_escape_string($comment);
 	$db_query = "SELECT * FROM USERS WHERE id = '".$_SESSION['id']."';";
 	$result = $db->query($db_query);
 	$result = $result->fetch_array(MYSQLI_ASSOC);

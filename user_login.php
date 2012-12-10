@@ -6,8 +6,8 @@
 	if($_POST['login_email'] == "" || $_POST['login_password'] == ""){
 		header("Location: incorrect_user.php");
 	}else{
-		$email = strip_tags($_POST['login_email']);
-		$password = strip_tags($_POST['login_password']);
+		$email = mysql_real_escape_string(strip_tags($_POST['login_email']));
+		$password = mysql_real_escape_string(strip_tags($_POST['login_password']));
 		$result = $db->query("SELECT * FROM USERS WHERE email = '$email' AND password = '$password'");
         $userArr = $result->fetch_array(MYSQLI_ASSOC);
 		//var_dump($result);

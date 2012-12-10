@@ -8,11 +8,13 @@
 	}
 	
 	require('database.php');
-	$userFirst=$_POST['information_first'];
-	$userLast=$_POST['information_last'];
-	$userEmail=$_POST['information_email'];
-	$userPassword=$_POST['information_password'];
-	$userConfirm=$_POST['information_password_confirm'];
+	$userFirst=mysql_real_escape_string($_POST['information_first']);
+	$userLast=mysql_real_escape_string($_POST['information_last']);
+	$userAge=mysql_real_escape_string($_POST['information_age']);
+        $userGender=mysql_real_escape_string($_POST['information_gender']);
+        $userEmail=mysql_real_escape_string($_POST['information_email']);
+	$userPassword=mysql_real_escape_string($_POST['information_password']);
+	$userConfirm=mysql_real_escape_string($_POST['information_password_confirm']);
         
 	
 	$result = $db->query("SELECT * FROM USERS WHERE id = '".$_SESSION['id']."';");
@@ -29,13 +31,19 @@
 	
 	$userCurrentEmail=$userid['email'];
 	$userCurrentFirst=$userid['firstname'];
+        $userCurrentAge=$userid['age'];
+        $userCurrentGender=$userid['gender'];
 	$userCurrentLast=$userid['lastname'];
 	$userCurrentPassword=$userid['password'];
-	echo $userCurrentEmail;
-        echo $userCurrentFirst;
-        echo $userCurrentLast;
-        echo $userCurrentPassword;
 	
+        if($userAge != $userCurrentAge){
+            $userCurrentAge = $userAge;
+        }
+        
+        if($userGender != $userCurrentGender){
+            $userCurrentGender = $userGender;
+        }
+        
 	if($userEmail != $userCurrentEmail){
 		$userCurrentEmail=$userEmail;
 		$emailModified=true;
@@ -51,7 +59,7 @@
 	}
 	$email=$_SESSION['email'];
 	
-	$query="UPDATE USERS SET firstname='$userCurrentFirst', lastname='$userCurrentLast', email='$userCurrentEmail', password='$userCurrentPassword' WHERE id=$sessionid;";
+	$query="UPDATE USERS SET firstname='$userCurrentFirst', lastname='$userCurrentLast', email='$userCurrentEmail', password='$userCurrentPassword', age='$userCurrentAge', gender='$userCurrentGender' WHERE id=$sessionid;";
 	$result=$db->query($query);
 
 	if($emailModified){
