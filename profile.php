@@ -96,7 +96,7 @@
 				$status = $currentRow['status'];
 
 				echo "<h3>$userFirstName $userLastName said:</h3>";
-				echo "<p>$status<br />$updateTime</p>";
+				echo "<p class=\"status_text\">$status</p><p class=\"status_time\">$updateTime</p>";
 				if($users_profile){
 				?>
 					<form action="delete_status.php" method="post">
@@ -161,7 +161,7 @@
 							echo "profile.php?friend_email=$email";
 						}
 					?>"/>
-					<textarea rows="5" cols="30" id="comment_text" name="comment_text"></textarea>
+					<textarea rows="2" cols="30" id="comment_text" name="comment_text"></textarea>
 					<input type="hidden" name="statusid" value="<?= $statusid; ?>" />
 					<br />
 					<input type="submit" value="Submit Comment" />

@@ -87,7 +87,7 @@
 						echo "home.php";
 					?>"/>
 					<br />
-					<textarea rows="5" cols="30" id="comment_text" name="comment_text"></textarea>
+					<textarea rows="2" cols="30" id="comment_text" name="comment_text"></textarea>
 					<input type="hidden" name="statusid" value="<?= $statusid; ?>" />
 					<br />
 					<input type="submit" value="Submit Comment" />
