@@ -17,9 +17,9 @@
 	</head>
 	<body>
 		<div class="header">
-			<h1>The Not Facebook</h1>
+			<h1 id="title">The Not Facebook</h1>
 		</div>
-		<div class="header">
+		<div class="header" id="links">
 			<a href="home.php">Home</a>
 			<br />
 			<a href="profile.php">Your Profile</a>

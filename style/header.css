@@ -1,22 +1,31 @@
-h1 {
-	text-align: center;
-	background-color: blue;
-}
-.header {
-	color: white;
-}
 body {
 	font-family: fantasy;
 	color: blue;
+	margin-left: 20em;
 	background-image: url("../page_images/not2.png");
 	background-repeat: no-repeat;
-	background-position: center center;
+	background-position: 1em 5em;
 	background-attachment: fixed;
 }
 .comments {
 	margin-left: 5em;
 }
-
+.header {
+	color: white;
+	margin-left: -19em;
+}
+#links {
+	float:left;
+	position: fixed;
+	top:25em;
+}
+h1 {
+	top: 2em;
+	margin-top:1em;
+	text-align: center;
+	background-color: blue;
+	#position: fixed;
+}
 .status_text {
 	font-style: italic;
 }
