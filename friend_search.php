@@ -40,7 +40,7 @@
 	
 ?>
 		<h2>Member Page</h2>
-                <form id="registration_form" method="post" action="member_page.php" enctype="multipart/form-data">
+                <form id="registration_form" method="post" action="friend_search.php" enctype="multipart/form-data">
                         <label for="registration_first_name">First Name:
                         <input type="text" id="search_first_name"  name="search_first_name"/>
                         </label>
@@ -81,7 +81,7 @@
 						<input name="new_friend_id" value="<?= $row['id']; ?>" type="hidden"/>
 						<td>
 							<input type="submit" value="Add as a friend"/>
-							<input name="return_page" value="member_page.php" type="hidden"/>
+							<input name="return_page" value="friend_search.php" type="hidden"/>
 						</td>
 					</form>
 				<?php

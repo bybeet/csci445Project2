@@ -27,7 +27,7 @@
                         <br />
 			<a href="friend_requests.php">Friend Requests</a>
 			<br />
-			<a href="member_page.php">Member Page</a>
+			<a href="friend_search.php">Member Page</a>
 			<br />
 			<a href="profile_logout.php">Logout of Not Facebook</a>
 		</div>

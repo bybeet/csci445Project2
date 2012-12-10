@@ -13,7 +13,7 @@
 		header('Location: friend_list.php');
 	}
 	else{
-		header('Location: member_page.php');
+		header('Location: friend_search.php');
 	}*/
 	$returnPage = $_POST['return_page'];
 	header("Location: $returnPage");
