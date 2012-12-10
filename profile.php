@@ -11,7 +11,7 @@
 	//		the user.
 	if($_GET['friend_email'] == NULL){
 		$users_profile = True;
-		$db_query = "SELECT * FROM USERS WHERE email = '".$_SESSION['email']."';";
+		$db_query = "SELECT * FROM USERS WHERE id = '".$_SESSION['id']."';";
 	}
 	else{
 		$db_query = "SELECT * FROM USERS WHERE email = '".$_GET['friend_email']."';";
@@ -124,7 +124,7 @@
 
 					//If the user created comment or this is their profile, let them
 					//delete the status.
-					if($users_profile || $_SESSION['email'] === $commenterEmail){
+					if($users_profile || $_SESSION['id'] === $commentUserId){
 					?>
 					<form action="delete_comment.php" method="post">
 						<input name="comment_id" value="<?= $comment['id']; ?>" type="hidden"/>

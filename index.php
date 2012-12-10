@@ -3,7 +3,7 @@
 	session_start();
 	
 	//if(isset($_SESSION['user'])){
-	if(isset($_SESSION['email'])){
+	if(isset($_SESSION['id'])){
 		header("Location: profile.php");
 	}
 	
@@ -13,9 +13,11 @@
 	<head>
 		<title>Not Facebook</title>
         <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
-        <img alt="not_facebook" source="/images/index.jpeg" width="266px" height="190px">
 	</head>
 	<body>
+            <div>
+                <img source="images/index.jpeg" alt="not_facebook"/>
+            </div>
 		<div>
 			<h1>Welcome to NFb!</h1>
 			<h2>The Not Facebook</h2>

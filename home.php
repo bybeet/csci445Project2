@@ -3,7 +3,7 @@
 	require('database.php');
 
 	//Query the current user from the database.
-	$result = $db->query("SELECT * FROM USERS WHERE email = '".$_SESSION['email']."';");
+	$result = $db->query("SELECT * FROM USERS WHERE id = '".$_SESSION['id']."';");
 	$userData = $result->fetch_array(MYSQLI_ASSOC);
 
 ?>
@@ -68,7 +68,7 @@
 					echo "<p>$commentText<br />$updateTime</p>";
 
 					//If they created the comment or they own the status, allow them to delete comments.
-					if($_SESSION['email'] === $commenterEmail || $_SESSION['email'] === $userEmail){
+					if($_SESSION['id'] === $commentUserId || $_SESSION['id'] === $currentUserNum){
 					?>
 					<form action="delete_comment.php" method="post">
 						<input name="comment_id" value="<?= $comment['id']; ?>" type="hidden"/>

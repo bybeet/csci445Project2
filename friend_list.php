@@ -2,7 +2,7 @@
 	require('header.php');
 	require('database.php');
 	
-	$result = $db->query("SELECT id FROM USERS WHERE email = '".$_SESSION['email']."';");
+	$result = $db->query("SELECT id FROM USERS WHERE id = '".$_SESSION['id']."';");
 	$userid = $result->fetch_array(MYSQLI_ASSOC);
 	$result = $db->query("SELECT friendid FROM FRIENDS WHERE userid = '".$userid['id']."';");
 	
