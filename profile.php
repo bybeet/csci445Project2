@@ -77,7 +77,11 @@
 			$query_string = "SELECT * from STATUS_UPDATES where userid = $userNum ORDER BY id DESC";
 			$statusUpdates = $db->query($query_string);
 			//Display the 5 most recent statuses.
-			for($i=0; $i<5; $i++){
+			$numberOfStatuses=$statusUpdates->num_rows;
+			if($numberOfStatuses>5){
+				$numberOfStatuses=5;
+			}
+			for($i=0; $i<$numberOfStatuses; $i++){
 				$currentRow=$statusUpdates->fetch_assoc();
 				//If there are less than 5, then exit the loop after all statuses have
 				//been used.

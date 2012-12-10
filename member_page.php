@@ -81,7 +81,7 @@
 						<input name="new_friend_id" value="<?= $row['id']; ?>" type="hidden"/>
 						<td>
 							<input type="submit" value="Add as a friend"/>
-							<input name="return_page" value="member_list.php" type="hidden"/>
+							<input name="return_page" value="member_page.php" type="hidden"/>
 						</td>
 					</form>
 				<?php

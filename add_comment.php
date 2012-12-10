@@ -1,6 +1,6 @@
 <?php
 
-	require('header.php');
+	//require('header.php');
 	require('database.php');
 
 	$statusid = $_POST['statusid'];
@@ -17,4 +17,5 @@
 
 	$returnPage = $_POST['return_page'];
 	header("Location: $returnPage");
+	exit;
 ?>
